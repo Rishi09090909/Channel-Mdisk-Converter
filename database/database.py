@@ -40,7 +40,7 @@ class Database:
             'posts': 0,
             'links': 0,
             'mdisk_links': 0,
-            'droplink_links': 0
+            'omegalinks_links': 0
         })
 
     async def update_posts(self, posts:int):
