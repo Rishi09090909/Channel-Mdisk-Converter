@@ -86,7 +86,7 @@ async def on_callback_query(bot:Client, query:CallbackQuery):
             header_text=await h.header_text,
             footer_text=await h.footer_text,
             method=await h.user_method,
-            droplink_api=await h.user_droplink_api,
+            omegalinks_api=await h.user_omegalinks_api,
             mdisk_api=await h.user_mdisk_api,
         ), reply_markup=BACK_REPLY_MARKUP, disable_web_page_preview=True)
 
