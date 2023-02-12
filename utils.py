@@ -49,8 +49,8 @@ async def main_convertor_handler(message:Message, type:str, edit_caption:bool=Fa
     # A dictionary which contains the methods to be called.
     METHODS = {
         "mdisk": replace_mdisk_link,
-        "droplink": replace_link,
-        "mdlink": mdisk_droplink_convertor
+        "omegalinks": replace_link,
+        "molink": mdisk_omegalinks_convertor
     }
 
     # Replacing the username with your username.
@@ -143,7 +143,7 @@ async def get_shortlink(link, x=""):
         link = link.replace("http", https)
 
     url = f'{WEBSITE}/api'
-    params = {'api': DROPLINK_API,
+    params = {'api': OMEGALINKS_API,
               'url': link,
               'alias': x
               }
@@ -159,7 +159,7 @@ async def get_shortlink(link, x=""):
 
     except Exception as e:
         logger.error(e)
-        links = f'{WEBSITE}/st?api={DROPLINK_API}&url={link}'
+        links = f'{WEBSITE}/st?api={OMEGALINKS_API}&url={link}'
         return await tiny_url_main(links)
 
 
@@ -311,7 +311,7 @@ async def droplink_bypass(url):
 
 async def is_droplink_url(url):
     domain = urlparse(url).netloc
-    domain = url if "droplink.co" in domain else False
+    domain = url if "mdisk.pro" in domain else False
     return domain
 
 
@@ -342,12 +342,12 @@ async def update_stats(m:Message, method):
 
     mdisk_links = re.findall(r'https?://mdisk.me[^\s`!()\[\]{};:".,<>?«»“”‘’]+', message + reply_markup)
     droplink_links = await extract_link(message + reply_markup)
-    total_links = len(droplink_links)
+    total_links = len(omegalinks_links)
 
     await db.update_posts(1)
 
-    if method == 'mdisk': droplink_links = []
-    if method == 'droplink': mdisk_links = []
+    if method == 'mdisk': omegalinks_links = []
+    if method == 'omegalinks': mdisk_links = []
 
     await db.update_links(total_links, len(droplink_links), len(mdisk_links))
 
