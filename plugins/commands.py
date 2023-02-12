@@ -106,7 +106,7 @@ async def stats_handler(c: Client, m:Message):
 **- Total Posts:** `{link_stats['posts']}`
 **- Total Links:** `{link_stats['links']}`
 **- Total Mdisk Links:** `{link_stats['mdisk_links']}`
-**- Total Droplink Links:** `{link_stats['droplink_links']}`
+**- Total Omegalinks Links:** `{link_stats['omegalinks_links']}`
 **- Used Storage:** `{size}`
 **- Total Free Storage:** `{free}`
 
